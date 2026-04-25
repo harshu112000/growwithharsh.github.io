@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to GROW WITH HARSH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0f1e;
+            --neon-cyan: #00eaff;
+            --neon-purple: #bb86fc;
+            --neon-mint: #00ffcc;
+            --glow: rgba(0, 234, 255, 0.6);
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, #03050e 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ==================== LANDING ==================== */
+        #landing {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .glow-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, var(--glow) 0%, transparent 65%);
+            animation: pulse 20s infinite alternate;
+        }
+        @keyframes pulse { 0% { opacity: 0.4; } 100% { opacity: 0.85; } }
+
+        .hero-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .site-logo {
+            width: 320px;
+            max-width: 80vw;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 25px var(--glow));
+            animation: floatLogo 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatLogo {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .site-logo:hover {
+            transform: scale(1.05);
+        }
+
+        #landing h1 {
+            font-size: 6.8em;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-mint));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 80px var(--glow);
+            margin: 0 0 40px;
+        }
+        .subtitle { font-size: 2.3em; color: #c7d2fe; margin-bottom: 70px; }
+
+        .enter-btn {
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+            color: black;
+            border: none;
+            padding: 28px 100px;
+            font-size: 2.2em;
+            font-weight: bold;
+            border-radius: 80px;
+            cursor: pointer;
+            box-shadow: 0 0 80px var(--glow);
+            transition: all 0.6s;
+        }
+        .enter-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 130px var(--glow);
+            color: white;
+        }
+
+        /* ==================== SERVICES HUB ==================== */
+        #services-hub {
+            padding: 100px 40px;
+            display: none;
+        }
+        #services-hub h1 {
+            text-align: center;
+            font-size: 4.8em;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 80px;
+        }
+        .services-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .services-title img {
+            width: 70px;
+            height: auto;
+            filter: drop-shadow(0 0 15px var(--glow));
+        }
+
+        .folders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .folder {
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(0,234,255,0.3);
+            border-radius: 28px;
+            padding: 60px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s;
+            backdrop-filter: blur(12px);
+        }
+        .folder:hover {
+            transform: translateY(-20px) scale(1.06);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 70px var(--glow);
+        }
+        .folder i { font-size: 5.5em; color: var(--neon-cyan); margin-bottom: 25px; }
+        .folder h3 { font-size: 2.1em; color: var(--neon-purple); }
+
+        /* ==================== SERVICE PAGES ==================== */
+        .service-page {
+            padding: 80px 40px;
+            min-height: 100vh;
+            display: none;
+        }
+        .service-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .service-page h1 {
+            font-size: 5.5em;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 60px var(--glow);
+        }
+        .welcome {
+            font-size: 2em;
+            color: #c7d2fe;
+            max-width: 800px;
+            margin: 40px auto 70px;
+        }
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 70px 0;
+        }
+        .feature-card {
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(0,234,255,0.25);
+            border-radius: 24px;
+            padding: 45px 30px;
+        }
+        .feature-card i {
+            font-size: 4em;
+            color: var(--neon-cyan);
+            margin-bottom: 20px;
+        }
+
+        /* Contact Styling */
+        .contact-info {
+            font-size: 1.8em;
+            line-height: 2.2;
+            margin: 50px 0;
+        }
+        .contact-info a { color: var(--neon-cyan); text-decoration: none; }
+        .contact-info a:hover { text-shadow: 0 0 15px var(--glow); }
+
+        /* AI Chat */
+        #ai-page {
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: none;
+        }
+        .chat-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.75);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(0,234,255,0.3);
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            text-align: center;
+            font-size: 2.6em;
+            margin-bottom: 20px;
+            color: var(--neon-cyan);
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            background: rgba(0,0,0,0.4);
+        }
+        .message {
+            margin: 15px 0;
+            padding: 15px 20px;
+            border-radius: 18px;
+            max-width: 85%;
+        }
+        .user-msg {
+            background: var(--neon-purple);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .ai-msg {
+            background: rgba(0,234,255,0.2);
+            color: white;
+            align-self: flex-start;
+        }
+        .chat-input {
+            display: flex;
+            gap: 12px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1.2em;
+        }
+        .chat-input button {
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+            color: black;
+            border: none;
+            padding: 0 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .back-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffd700);
+            color: black;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.4em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            transform: scale(1.08);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
+            color: black;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.6em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 50px var(--glow);
+            transition: all 0.5s;
+        }
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 90px var(--glow);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            #landing h1 { font-size: 3.2em; }
+            .subtitle { font-size: 1.3em; }
+            .enter-btn { padding: 18px 40px; font-size: 1.1em; }
+            .site-logo { width: 220px; }
+            #services-hub h1, .service-page h1 { font-size: 2.6em; }
+            .services-title img { width: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LANDING PAGE -->
+    <section id="landing">
+        <div class="glow-bg"></div>
+        <div data-aos="zoom-in" data-aos-duration="1500" class="hero-brand">
+            <img src="logo.png.jpg" alt="Grow With Harsh Logo" class="site-logo">
+            <h1>Welcome to GROW WITH HARSH</h1>
+            <p class="subtitle">Digital Growth • Viral Creativity • AI-Powered Results</p>
+            <button class="enter-btn" onclick="showServices()">Click Here to Enter the Harsh World</button>
+        </div>
+    </section>
+
+    <!-- SERVICES HUB -->
+    <section id="services-hub">
+        <h1 data-aos="fade-down" class="services-title">
+            <img src="logo.png.jpg" alt="Logo">
+            <span>Choose Your Growth Path</span>
+        </h1>
+        <div class="folders">
+            <div class="folder" onclick="showService(1)" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-chart-line"></i><h3>Social Media Growth</h3>
+            </div>
+            <div class="folder" onclick="showService(2)" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-globe"></i><h3>Website Development</h3>
+            </div>
+            <div class="folder" onclick="showService(3)" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-video"></i><h3>Video & Reels Creation</h3>
+            </div>
+            <div class="folder" onclick="showService(4)" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-robot"></i><h3>AI Advertising</h3>
+            </div>
+            <div class="folder" onclick="showService(5)" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-address-book"></i><h3>Contact Me</h3>
+            </div>
+            <div class="folder" onclick="showAI()" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-brain"></i><h3>AI Assistant</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 1: Social Media Growth -->
+    <section id="service1" class="service-page">
+        <div class="service-content">
+            <h1 data-aos="fade-down">Welcome to Social Media Growth</h1>
+            <p class="welcome" data-aos="fade-up" data-aos-delay="300">
+                We create viral strategies, explosive reels, and high-engagement campaigns that grow your brand rapidly.
+            </p>
+            <div class="service-features">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-rocket"></i><h3>Viral Reels</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="600"><i class="fas fa-users"></i><h3>Audience Growth</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="800"><i class="fas fa-chart-line"></i><h3>Engagement Boost</h3></div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showService(5)">← Previous</button>
+                <button class="nav-btn" onclick="showService(2)">Next →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 2: Website Development -->
+    <section id="service2" class="service-page">
+        <div class="service-content">
+            <h1 data-aos="fade-down">Welcome to Website Development</h1>
+            <p class="welcome" data-aos="fade-up" data-aos-delay="300">
+                Custom, fast, and conversion-focused websites that represent your brand perfectly.
+            </p>
+            <div class="service-features">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-mobile-alt"></i><h3>Responsive Design</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="600"><i class="fas fa-bolt"></i><h3>Fast Loading</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="800"><i class="fas fa-search"></i><h3>SEO Optimized</h3></div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showService(1)">← Previous</button>
+                <button class="nav-btn" onclick="showService(3)">Next →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 3: Video & Reels -->
+    <section id="service3" class="service-page">
+        <div class="service-content">
+            <h1 data-aos="fade-down">Welcome to Video & Reels Creation</h1>
+            <p class="welcome" data-aos="fade-up" data-aos-delay="300">
+                Professional videos and scroll-stopping reels that capture attention and drive action.
+            </p>
+            <div class="service-features">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-film"></i><h3>Pro Videos</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="600"><i class="fas fa-magic"></i><h3>Creative Reels</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="800"><i class="fas fa-share-alt"></i><h3>Viral Content</h3></div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showService(2)">← Previous</button>
+                <button class="nav-btn" onclick="showService(4)">Next →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 4: AI Advertising -->
+    <section id="service4" class="service-page">
+        <div class="service-content">
+            <h1 data-aos="fade-down">Welcome to AI Advertising</h1>
+            <p class="welcome" data-aos="fade-up" data-aos-delay="300">
+                Smart, data-driven AI advertising campaigns that deliver maximum ROI.
+            </p>
+            <div class="service-features">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-brain"></i><h3>AI Targeting</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="600"><i class="fas fa-dollar-sign"></i><h3>High ROI</h3></div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="800"><i class="fas fa-chart-pie"></i><h3>Smart Optimization</h3></div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showService(3)">← Previous</button>
+                <button class="nav-btn" onclick="showService(5)">Next →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 5: Contact -->
+    <section id="service5" class="service-page">
+        <div class="service-content">
+            <h1 data-aos="fade-down">Welcome to Contact</h1>
+            <p class="welcome" data-aos="fade-up" data-aos-delay="300">
+                Let's connect and grow your business together. I'm just one message away!
+            </p>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="500">
+                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+919773161637">+91 9773161637</a></p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:hjani1155@gmail.com">hjani1155@gmail.com</a></p>
+                <p><i class="fab fa-instagram"></i> <strong>Instagram:</strong> <a href="https://www.instagram.com/harsh_offical_1105" target="_blank">@harsh_offical_1105</a></p>
+                <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/919773161637" target="_blank">+91 9773161637</a></p>
+            </div>
+            <div style="margin:60px 0;" data-aos="fade-up" data-aos-delay="700">
+                <iframe src="https://www.google.com/maps?q=Mehsana,Gujarat&output=embed" width="100%" height="400" style="border-radius:24px;border:0;" allowfullscreen></iframe>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showService(4)">← Previous</button>
+                <button class="nav-btn" onclick="showServices()">Back to All Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI ASSISTANT -->
+    <section id="ai-page">
+        <div class="chat-container">
+            <div class="chat-header" data-aos="fade-down">
+                <i class="fas fa-brain"></i> Harsh's AI Assistant
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Ask about services, pricing..." 
+                       onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="back-btn" onclick="showServices()">
+                    ← Back to All Services
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 1200 });
+
+        function showServices() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('services-hub').style.display = 'block';
+            document.querySelectorAll('.service-page, #ai-page').forEach(el => el.style.display = 'none');
+        }
+
+        function showService(n) {
+            document.getElementById('services-hub').style.display = 'none';
+            document.querySelectorAll('.service-page, #ai-page').forEach(el => el.style.display = 'none');
+            document.getElementById('service' + n).style.display = 'block';
+            setTimeout(() => AOS.refresh(), 100);
+        }
+
+        function showAI() {
+            document.getElementById('services-hub').style.display = 'none';
+            document.querySelectorAll('.service-page').forEach(el => el.style.display = 'none');
+            document.getElementById('ai-page').style.display = 'block';
+
+            const messages = document.getElementById('chat-messages');
+            messages.innerHTML = `
+                <div class="message ai-msg">
+                    Hello! I'm Harsh's AI Assistant.<br><br>
+                    At <strong>Grow with Harsh</strong>, we specialize in complete digital growth solutions.<br><br>
+                    Would you like details about our services or pricing?
+                </div>`;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const messages = document.getElementById('chat-messages');
+            messages.innerHTML += `<div class="message user-msg">${text}</div>`;
+            messages.scrollTop = messages.scrollHeight;
+            input.value = '';
+
+            setTimeout(() => {
+                let reply = "";
+                const q = text.toLowerCase();
+
+                if (q.includes("price") || q.includes("pricing") || q.includes("cost") || q.includes("package")) {
+                    reply = `Here are our current starting prices (2026):<br><br>
+<strong>Social Media Growth:</strong> ₹8,000 – ₹25,000/month<br>
+<strong>Website Development:</strong> ₹12,000 – ₹45,000 (one time)<br>
+<strong>Video & Reels:</strong> ₹1,500 – ₹20,000 per project<br>
+<strong>AI Advertising:</strong> ₹10,000 – ₹30,000/month + ad spend<br>
+<strong>Logo & Branding:</strong> ₹4,000 – ₹18,000<br><br>
+Prices are negotiable.`;
+                } 
+                else if (q.includes("yes") || q.includes("sure") || q.includes("tell me") || q.includes("services")) {
+                    reply = `We provide:<br><br>
+• Social Media Growth & Management<br>
+• Custom Website Development<br>
+• Video & Reels Creation<br>
+• AI Advertising Campaigns<br>
+• Logo, Posters & Creative Design<br><br>
+Would you like more details or pricing?`;
+                } 
+                else {
+                    reply = "At Grow with Harsh, we help businesses grow digitally. Would you like **pricing** or details about any **service**?";
+                }
+
+                messages.innerHTML += `<div class="message ai-msg">${reply}</div>`;
+                messages.scrollTop = messages.scrollHeight;
+            }, 700);
+        }
+    </script>
+</body>
+</html>
